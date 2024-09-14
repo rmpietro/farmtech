@@ -11,7 +11,7 @@ def main():
         (5, "Gerar dados de análise estatística\n"),
         (6, "Exibir previsão meteorológica para o município\n"),
         (7, "Sair do programa")
-    ];
+    ]
 
     area_metrics = {}
 
@@ -60,6 +60,28 @@ def main():
                         print("       |-> Vale ressaltar que uma das ruas na área trapezoidal (Cana-de-Açúcar) é de formato triangular.")
                         print("   |-> Os caracteres de formato quadrado (▢) representam o espaçamento entre as ruas de plantio.")
                         topology.print_topology()
+
+                        print("\nEntrada de medidas conforme a topologia exibida\n(somente números - separe casa decimais usando o '.'): ")
+                        print("_______________________________________________________________\n")
+
+                        area_constraints = [
+                            ('L1', '(EXTENSÃO das ruas de plantio de MILHO)'),
+                            ('R1', '(LARGURA das ruas de plantio de MILHO)'),
+                            ('L2', '(EXTENSÃO das ruas de plantio de CANA-DE-AÇÚCAR\nNA ÁREA DE PLANTIO 1)'),
+                            ('R2', '(LARGURA das ruas de plantio de CANA-DE-AÇÚCAR\n PARA AMBAS AS ÁREAS)'),
+                            ('L3', '(EXTENSÃO das ruas de plantio de CANA-DE-AÇÚCAR\nNA ÁREA DE PLANTIO 2)')]
+                        for constraint in area_constraints:
+                            constraint_str = input(f"Informe o valor de {constraint[0]} {constraint[1]} em metros: ")
+                            while True:
+                                if not constraint_str.replace('.','',1).isdigit():
+                                    print("Valor inválido. Informe um número válido.")
+                                    constraint_str = input(f"Informe o valor de {constraint[0]} {constraint[1]} em metros: ")
+                                    continue
+                                else:
+                                    break
+                            area_metrics[constraint[0]] = float(constraint_str)
+                        print("\nMedidas recebidas e atualizadas com sucesso!\n")
+
                     case 2:
                        print("Atualizar medidas")
                     case 3:

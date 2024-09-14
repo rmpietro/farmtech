@@ -1,4 +1,24 @@
 import topology
+import os.path
+
+
+#--------------------------------------------------------------
+# Arquivo principal do programa - executa a gestão do menu e das opções do sistema
+# Chama funções de outros arquivos para realizar as operações necessárias
+#--------------------------------------------------------------
+
+# Função para apagar arquivos de saída gerados anteriormente na pasta CSV
+def delete_csv_data_files():
+    if os.path.isfile('csv/corn_data_output.csv'):
+        os.remove('csv/corn_data_output.csv')
+    if os.path.isfile('csv/sugarcane_data_output.csv'):
+        os.remove('csv/sugarcane_data_output.csv')
+    if os.path.isfile('csv/corn_stats_R.csv'):
+        os.remove('csv/corn_stats_R.csv')
+    if os.path.isfile('csv/sugarcane_stats_R.csv'):
+        os.remove('csv/sugarcane_stats_R.csv')
+    if os.path.isfile('csv/weather_forecast_R.csv'):
+        os.remove('csv/weather_forecast_R.csv')
 
 # Função principal do programa
 def main():
@@ -102,6 +122,9 @@ def main():
                             print("Não há medidas informadas para apagar. Informe as medidas para que essa opção esteja disponível.\n")
                         else:
                             area_metrics.clear()
+
+                            # Apagando arquivos de saída gerados  nos outros itens do menu
+                            delete_csv_data_files()
                         print("Medidas e arquivos de transferência apagadas com sucesso.\n\n")
                     case 4:
                         print("Calcular consumo de insumos")

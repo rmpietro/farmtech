@@ -10,6 +10,7 @@ Projeto em grupo com a implementação da proposta solicitada em material de est
 - [Pedro Scofield](https://github.com/Shyproust)
 - [Gustavo Valtrick](https://github.com/gustavo-valtrick)
 - [Iago Cotta](https://github.com/Iago-Cotta)
+  - *Por uma troca de nome de usuário o Iago não está aparecendo como colaborador porque o Github não fez o link entre o comitador e o usuário adicionado, no entanto ele é um dos integrantes do grupo e seus commits podem ser verificados no histórico do projeto.*
 
 ### Pontos de Observação do Projeto
 - Toda a lógica realizada em R encontra-se em arquivos específicos dentro da pasta "R";

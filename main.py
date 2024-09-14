@@ -98,7 +98,11 @@ def main():
                             print(area_metrics)
                             print(f"\nMedida {measure} atualizada com sucesso para {new_value} metros.\n")
                     case 3:
-                        print("Apagar medidas")
+                        if len(area_metrics) < 5:
+                            print("Não há medidas informadas para apagar. Informe as medidas para que essa opção esteja disponível.\n")
+                        else:
+                            area_metrics.clear()
+                        print("Medidas e arquivos de transferência apagadas com sucesso.\n\n")
                     case 4:
                         print("Calcular consumo de insumos")
                     case 5:

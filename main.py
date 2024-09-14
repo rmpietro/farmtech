@@ -1,3 +1,5 @@
+import topology
+
 # Função principal do programa
 def main():
     chosen_option = 0
@@ -10,6 +12,8 @@ def main():
         (6, "Exibir previsão meteorológica para o município\n"),
         (7, "Sair do programa")
     ];
+
+    area_metrics = {}
 
     print("   ______                     _______        _     \t")
     print("  |  ____|                   |__   __|      | |    \t")
@@ -46,7 +50,16 @@ def main():
             else:
                 match chosen_option:
                     case 1:
-                        print("Captura das medidas")
+                        print("\n\nA Topologia da área de cultivo é apresentada abaixo.")
+                        print("_______________________________________________________________")
+                        print(" |-> Informe o valor de cada medida para as arestas do terreno e para as ruas de plantio,\nconforme as referências nomeadas no diagrama como forma de orientação:\n")
+                        print("   |-> L1, L2 e L3 são medidas laterais do terreno cultivado")
+                        print("   |-> R1 e R2 são medidas de largura das ruas de plantio")
+                        print("     |-> Plantio de milho delineado com 2 ruas horizontais")
+                        print("     |-> Plantio de cana-de-açúcar delineado com 4 e 6 ruas verticais\nem cada uma das áreas, respectivamente.")
+                        print("       |-> Vale ressaltar que uma das ruas na área trapezoidal (Cana-de-Açúcar) é de formato triangular.")
+                        print("   |-> Os caracteres de formato quadrado (▢) representam o espaçamento entre as ruas de plantio.")
+                        topology.print_topology()
                     case 2:
                        print("Atualizar medidas")
                     case 3:

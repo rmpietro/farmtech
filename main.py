@@ -83,7 +83,20 @@ def main():
                         print("\nMedidas recebidas e atualizadas com sucesso!\n")
 
                     case 2:
-                       print("Atualizar medidas")
+                        if len(area_metrics) < 5:
+                            print("Não há medidas suficientes informadas para atualização. Informe as medidas para que essa opção esteja disponível.\n")
+                        chosen_option = "s"
+                        while True:
+                            measure = input("Entre com a medida a ser atualizada (L1, R1, L2, R2, L3)\nou digite 'S' para voltar ao menu anterior: ")
+                            if measure.lower() == "s":
+                                break
+                            if measure not in area_metrics.keys():
+                                print("Medida inválida. Informe uma das medidas já informadas.\n")
+                                continue
+                            new_value = float(input(f"Entre com o novo valor para {measure}: "))
+                            area_metrics[measure] = new_value
+                            print(area_metrics)
+                            print(f"\nMedida {measure} atualizada com sucesso para {new_value} metros.\n")
                     case 3:
                         print("Apagar medidas")
                     case 4:

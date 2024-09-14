@@ -2,6 +2,7 @@ import topology
 import pandas as pd
 import area_calculation
 from agricultural_input_calc import calculate_input_consumption
+import subprocess
 import os.path
 
 
@@ -155,7 +156,34 @@ def main():
                             corn_input_consumption.to_csv('csv/corn_data_output.csv')
                             sugarcane_input_consumption.to_csv('csv/sugarcane_data_output.csv')
                     case 5:
-                        print("Gerar estatística em R")
+                        # As estatísticas serão calculadas por meio de um script em R que lerá os dados a partir da exportação
+                        # dos resultados em CSV pelo programa em Python e gerará um arquivo de saída com as estatísticas.
+                        # Esse arquivo será lido de volta pelo programa em Python e as informações exibidas no console
+                        if os.path.isfile('csv/corn_data_output.csv') and os.path.isfile('csv/sugarcane_data_output.csv'):
+                            r_script_path = "R/crop_statistics.R"
+                            # Call the R script using Rscript command
+                            subprocess.run(["Rscript", "--no-echo", r_script_path])
+
+                            corn_stats_from_R = pd.read_csv('csv/corn_stats_R.csv')
+                            sugarcane_stats_from_R = pd.read_csv('csv/sugarcane_stats_R.csv')
+
+                            print("\n\n_______________________________________________________________")
+                            print("Se estiver executando a partir de um programa Python, o script em R exibirá mensagens de warning que podem ser desconsideradas.")
+                            print("_______________________________________________________________")
+
+                            print("\n\n_______________________________________________________________")
+                            print("Milho - Estatísticas de consumo de insumos em um ano ")
+                            print(corn_stats_from_R)
+                            print("_______________________________________________________________")
+
+
+                            print("\n\n_______________________________________________________________")
+                            print("Cana de Açúcar - Estatísticas de consumo de insumos em um ano ")
+                            print(sugarcane_stats_from_R)
+                            print("_______________________________________________________________")
+                        else:
+                            print("Não há dados de consumo de insumos para gerar estatísticas.\nExecute a opção 4 para gerar os dados de consumo de insumos.\n")
+
                     case 6:
                         print("Exibir previsão meteorológica para o município\n")
                     case 7:

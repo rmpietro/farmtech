@@ -1,4 +1,7 @@
 import topology
+import pandas as pd
+import area_calculation
+from agricultural_input_calc import calculate_input_consumption
 import os.path
 
 
@@ -127,7 +130,30 @@ def main():
                             delete_csv_data_files()
                         print("Medidas e arquivos de transferência apagadas com sucesso.\n\n")
                     case 4:
-                        print("Calcular consumo de insumos")
+                        if len(area_metrics) < 5:
+                            print("Não há medidas informadas para os cálculos. Informe as medidas para que essa opção esteja disponível.")
+                        else:
+                            print("Áreas totais calculadas para cada cultura:")
+                            corn_area_total = area_calculation.corn_area_calculation(3, area_metrics['L1'], area_metrics['R1'])
+                            sugarcane_area_total = area_calculation.sugar_cane_area_calculation(4, 6, area_metrics['L2'], area_metrics['L3'], area_metrics['R2'])
+                            print(f"\nÁrea total de plantio de milho: {corn_area_total:,.2f} m² ou {(corn_area_total / 1_000_000):,.2f} km² ou ainda {(corn_area_total / 10_000):,.2f} hectares")
+                            print(f"\nÁrea total de plantio de cana-de-açúcar: {sugarcane_area_total:,.2f} m² ou {(sugarcane_area_total / 1_000_000):,.2f} km² ou ainda {(sugarcane_area_total / 10_000):,.2f} hectares")
+                            print("\nCálculo do consumo de insumos para as culturas (por meses do ano): ")
+
+                            corn_input_consumption = calculate_input_consumption(corn_area_total, "milho")
+                            sugarcane_input_consumption = calculate_input_consumption(sugarcane_area_total, "cana")
+                            print("_______________________________________________________________")
+                            print("Milho (Resultados em Kg ou L por metro quadrado)")
+                            print("_______________________________________________________________\n")
+                            print(corn_input_consumption)
+
+                            print("\n\n_______________________________________________________________")
+                            print("Cana-de-Açúcar (Resultados em Kg ou L por metro quadrado)")
+                            print("_______________________________________________________________\n")
+                            print(sugarcane_input_consumption)
+                            print("\n\n_______________________________________________________________")
+                            corn_input_consumption.to_csv('csv/corn_data_output.csv')
+                            sugarcane_input_consumption.to_csv('csv/sugarcane_data_output.csv')
                     case 5:
                         print("Gerar estatística em R")
                     case 6:

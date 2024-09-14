@@ -185,7 +185,12 @@ def main():
                             print("Não há dados de consumo de insumos para gerar estatísticas.\nExecute a opção 4 para gerar os dados de consumo de insumos.\n")
 
                     case 6:
-                        print("Exibir previsão meteorológica para o município\n")
+                        if os.path.isfile('csv/weather_forecast_R.csv'):
+                            os.remove('csv/weather_forecast_R.csv')
+                        print("Chamando API Climatempo com R e exibindo dados de previsão meteorológica\npara os próximos 7 dias para a cidade de Presidente Prudente, localização das fazendas em foco.\n")
+                        r_script_path = "R/weather_data.R"
+                        # Call the R script using Rscript command
+                        subprocess.run(["Rscript", "--no-echo", r_script_path])
                     case 7:
                         print("Saindo do programa...\n")
                         break

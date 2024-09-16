@@ -3,13 +3,13 @@
 
 Projeto em grupo com a implementação da proposta solicitada em material de estudo da Faculdade.
 
-### Integrantes do Grupo
+### Integrantes do Grupo **68**
 
-- [Rodrigo Mastropietro](https://github.com/rmpietro)
-- [Tiago de Andrade Bastos](https://github.com/tiagobastos87)
-- [Pedro Scofield](https://github.com/Shyproust)
-- [Gustavo Valtrick](https://github.com/gustavo-valtrick)
-- [Iago Cotta](https://github.com/Iago-Cotta)
+- [Rodrigo Mastropietro](https://github.com/rmpietro) - RM560081
+- [Tiago de Andrade Bastos](https://github.com/tiagobastos87) - RM560467
+- [Pedro Scofield](https://github.com/Shyproust) - RM560589
+- [Gustavo Valtrick](https://github.com/gustavo-valtrick) - RM559575
+- [Iago Cotta](https://github.com/Iago-Cotta) - RM559655
   - *Por uma troca de nome de usuário o Iago não está aparecendo como colaborador porque o Github não fez o link entre o comitador e o usuário adicionado, no entanto ele é um dos integrantes do grupo e seus commits podem ser verificados no histórico do projeto.*
 
 ### Pontos de Observação do Projeto
